@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../../generated/l10n.dart';
 
 class CustomSwitchTile extends StatelessWidget {
   const CustomSwitchTile({
@@ -9,7 +10,7 @@ class CustomSwitchTile extends StatelessWidget {
     required this.leadingIcon,
     required this.enabledSubtitle,
     required this.title,
-    required this.desabledSubtitle,
+    required this.disabledSubtitle,
     this.onChanged,
   });
 
@@ -17,7 +18,7 @@ class CustomSwitchTile extends StatelessWidget {
   final IconData leadingIcon;
   final String enabledSubtitle;
   final String title;
-  final String desabledSubtitle;
+  final String disabledSubtitle;
   final void Function(bool)? onChanged;
   @override
   Widget build(BuildContext context) {
@@ -39,9 +40,10 @@ class CustomSwitchTile extends StatelessWidget {
         style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
       ),
       subtitle: Text(
-        isAllowed ? enabledSubtitle : desabledSubtitle,
+        isAllowed ? enabledSubtitle : disabledSubtitle,
         style: TextStyle(
-            color: isAllowed ? AppColors.timeLineColor : AppColors.trashColor),
+              fontWeight: FontWeight.w200,
+            fontFamily: S.of(context).fontFamily, color: isAllowed ? AppColors.timeLineColor : AppColors.trashColor),
       ),
     );
   }

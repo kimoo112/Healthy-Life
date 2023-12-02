@@ -1,11 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../../generated/l10n.dart';
 
 class ExercisesRow extends StatelessWidget {
   final Map eObj;
   final VoidCallback onPressed;
-  const ExercisesRow({Key? key, required this.eObj, required this.onPressed}) : super(key: key);
+  const ExercisesRow({Key? key, required this.eObj, required this.onPressed})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,29 +30,30 @@ class ExercisesRow extends StatelessWidget {
           ),
           Expanded(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    eObj["title"].toString(),
-                    style: TextStyle(color: AppColors.whiteColor, fontSize: 14, fontWeight: FontWeight.w500),
-                  ),
-                  Text(
-                    eObj["value"].toString(),
-                    style: TextStyle(
-                      color: AppColors.infoTextColor,
-                      fontSize: 12,
-                    ),
-                  ),
-                ],
-              )),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                eObj["title"].toString(),
+                style: TextStyle(
+                    color: AppColors.whiteColor,
+                    fontFamily: S.of(context).fontFamily,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500),
+              ),
+              Text(
+                eObj["value"].toString(),
+                style: TextStyle(
+                  fontFamily: S.of(context).fontFamily,
+                  color: AppColors.infoTextColor,
+                  fontSize: 12,
+                ),
+              ),
+            ],
+          )),
           IconButton(
               onPressed: onPressed,
-              icon: Image.asset(
-                "assets/icons/next_go.png",
-                width: 20,
-                height: 20,
-                fit: BoxFit.contain,
-              ))
+              icon: const Icon(CupertinoIcons.arrow_right_circle_fill,
+                  color: AppColors.bodySmallTextColor))
         ],
       ),
     );

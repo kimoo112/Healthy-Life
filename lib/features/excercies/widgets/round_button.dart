@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../../generated/l10n.dart';
 
 enum RoundButtonType { primaryBG, secondaryBG }
 
@@ -34,10 +35,11 @@ class RoundButton extends StatelessWidget {
         textColor: AppColors.scaffoldBackgroundColor,
         child: Text(
           title,
-          style: const TextStyle(
+          style:  TextStyle(
             fontSize: 11,
             color: AppColors.scaffoldBackgroundColor,
-            fontFamily: "Poppins",
+                                        fontFamily: S.of(context).fontFamily,
+
             fontWeight: FontWeight.w400,
           ),
         ),

@@ -18,8 +18,8 @@ class FavoriteCubit extends Cubit<FavoriteState> {
     emit(FavoriteListChanged(favoriteList));
   }
 
-   isFavorite(RecipeModel recipe) {
-emit(ThisItemInFavorite());
- return favoriteList.contains(recipe);
+  isFavorite(RecipeModel recipe) {
+    emit(ThisItemInFavorite());
+    return favoriteList.contains(recipe);
   }
 }

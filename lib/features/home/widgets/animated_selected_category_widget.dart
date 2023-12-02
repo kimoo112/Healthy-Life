@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
+import '../../../generated/l10n.dart';
+
 class AnimatedSelectedCategoryWidget extends StatelessWidget {
   final Duration selectedCategoryPlayDuration;
   final Duration selectedCategoryDelayDuration;
@@ -14,9 +16,9 @@ class AnimatedSelectedCategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Text(
-        "Recipes",
+        S.of(context).Recipes,
         style: Theme.of(context).textTheme.titleLarge,
       )
           .animate()

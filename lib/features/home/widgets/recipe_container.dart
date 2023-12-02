@@ -75,27 +75,31 @@ class _AnimatedNutritionText extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Text("${nutrition.calories} Cal ",
-                style: Theme.of(context).textTheme.labelMedium //label medium
-                )
-            .animate()
-            .scaleXY(
-                begin: 0,
-                end: 1,
-                delay: 300.ms,
-                duration: playDuration - 100.ms,
-                curve: Curves.decelerate),
+        Text(
+          "${nutrition.calories} Cal ",
+          style: const TextStyle(
+              fontSize: 12,
+              color: Color(0xFFFFECB3),
+              fontFamily: 'Poppins'), //label medium
+        ).animate().scaleXY(
+            begin: 0,
+            end: 1,
+            delay: 300.ms,
+            duration: playDuration - 100.ms,
+            curve: Curves.decelerate),
         SizedBox(width: 30.w),
-        Text("${nutrition.protein} Protein",
-                style: Theme.of(context).textTheme.labelMedium //label medium
-                )
-            .animate()
-            .scaleXY(
-                begin: 0,
-                end: 1,
-                delay: 300.ms,
-                duration: playDuration - 100.ms,
-                curve: Curves.decelerate),
+        Text(
+          "${nutrition.protein} Protein",
+          style: const TextStyle(
+              fontSize: 12,
+              color: Color(0xFFFFECB3),
+              fontFamily: 'Poppins'), //label medium
+        ).animate().scaleXY(
+            begin: 0,
+            end: 1,
+            delay: 300.ms,
+            duration: playDuration - 100.ms,
+            curve: Curves.decelerate),
       ],
     );
   }
@@ -139,12 +143,17 @@ class _AnimatedNameWidget extends StatelessWidget {
     return Container(
       constraints: const BoxConstraints(maxWidth: 150),
       alignment: Alignment.centerLeft,
-      child: Text(name,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 3,
-              softWrap: true,
-              style: Theme.of(context).textTheme.titleLarge //title large
-              )
+      child: Text(
+        name,
+        overflow: TextOverflow.ellipsis,
+        maxLines: 3,
+        softWrap: true,
+        style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w500,
+            color: Colors.white,
+            fontFamily: 'Poppins'), //title large
+      )
           .animate()
           .fadeIn(
               duration: 300.ms, delay: playDuration, curve: Curves.decelerate)
@@ -167,19 +176,22 @@ class _AnimatedDescriptionWidget extends StatelessWidget {
     return Container(
       // padding: const EdgeInsets.only(top: 10, left: 5, bottom: 10),
       constraints: const BoxConstraints(maxWidth: 150),
-      child: Text(description,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 4,
-              softWrap: true,
-              style: Theme.of(context).textTheme.labelLarge //label large
-              )
-          .animate()
-          .scaleXY(
-              begin: 0,
-              end: 1,
-              delay: 300.ms,
-              duration: playDuration - 100.ms,
-              curve: Curves.decelerate),
+      child: Text(
+        description,
+        overflow: TextOverflow.ellipsis,
+        maxLines: 4,
+        softWrap: true,
+        style: const TextStyle(
+            fontSize: 12,
+            color: Colors.white60,
+            fontWeight: FontWeight.w400,
+            fontFamily: 'Poppins'), //label large
+      ).animate().scaleXY(
+          begin: 0,
+          end: 1,
+          delay: 300.ms,
+          duration: playDuration - 100.ms,
+          curve: Curves.decelerate),
     );
   }
 }

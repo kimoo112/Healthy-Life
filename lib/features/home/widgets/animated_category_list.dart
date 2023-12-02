@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy_food/core/theme/app_colors.dart';
 
+import '../../../generated/l10n.dart';
 import 'food_category_widget.dart';
 
 class AnimatedCategoryList extends StatefulWidget {
@@ -24,6 +25,12 @@ class AnimatedCategoryList extends StatefulWidget {
 class _AnimatedCategoryListState extends State<AnimatedCategoryList> {
   @override
   Widget build(BuildContext context) {
+    var categories = [
+      FoodCategoryWidget(icon: "🔥", name: S.of(context).popularCategory),
+      FoodCategoryWidget(icon: "🥦", name: S.of(context).healthyCategory),
+      FoodCategoryWidget(icon: "🍲", name: S.of(context).soupCategory),
+      FoodCategoryWidget(icon: "🍿", name: S.of(context).snacksCategory),
+    ];
     return TabBar(
       splashBorderRadius: BorderRadius.circular(22.0.r),
       dividerColor: AppColors.scaffoldBackgroundColor,
@@ -37,11 +44,11 @@ class _AnimatedCategoryListState extends State<AnimatedCategoryList> {
         ),
       ),
       labelColor: const Color.fromARGB(255, 212, 173, 54),
-      labelStyle: const TextStyle(fontFamily: 'Poppins'),
+      labelStyle: TextStyle(fontFamily: S.of(context).fontFamily),
       indicatorColor: Colors.transparent,
       controller: widget.tabController,
       isScrollable: true,
-      tabs: _categories.map((category) {
+      tabs: categories.map((category) {
         return Container(
           decoration: BoxDecoration(
             border: Border.all(
@@ -68,10 +75,3 @@ class _AnimatedCategoryListState extends State<AnimatedCategoryList> {
         curve: Curves.easeInOutSine);
   }
 }
-
-const _categories = [
-  FoodCategoryWidget(icon: "🔥", name: "Popular"),
-  FoodCategoryWidget(icon: "🥦", name: "Healthy"),
-  FoodCategoryWidget(icon: "🍲", name: "Soup"),
-  FoodCategoryWidget(icon: "🍿", name: "Snacks"),
-];

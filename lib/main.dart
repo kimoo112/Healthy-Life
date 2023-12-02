@@ -4,21 +4,28 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy_food/core/bloc_observer.dart';
 import 'package:healthy_food/features/auth/logic/cubit/google_auth_cubit.dart';
 import 'package:healthy_food/features/favorite/logic/cubit/favorite_cubit.dart';
 import 'package:healthy_food/features/profile/logic/cubit/profile_image_cubit.dart';
 import 'package:healthy_food/firebase_options.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'core/app_router.dart';
+import 'core/constants/strings.dart';
 import 'core/theme/app_theme.dart';
-
+import 'core/theme/ar_app_theme.dart';
+import 'generated/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Hive.openBox(Strings.switchersBox);
+
   MyBlocObserver();
-   AwesomeNotifications().initialize(
+  AwesomeNotifications().initialize(
     null,
     [
       NotificationChannel(
@@ -40,7 +47,6 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   FirebaseMessaging masseging = FirebaseMessaging.instance;
   NotificationSettings settings = await masseging.requestPermission();
-  // await initializeDependencies();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -57,41 +63,51 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    
     return ScreenUtilInit(
-        designSize: const Size(360, 690),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (_, child) {
-          return MultiBlocProvider(
-            providers: [
-//             BlocProvider<RemoteExerciseBloc>(
-//   create: (context) => RemoteExerciseBloc(
-//     GetExerciseUseCase(sl()), 
-//     exerciseApiService: ExerciseApiService(sl()),
-//     exerciseRepository: ExerciseRepoImpl(sl(), sl()),
-//   )..add(const GetExerciseEvent()),
-// ),
-              BlocProvider(
-                create: (context) => FavoriteCubit(),
-              ),
-              BlocProvider(
-                create: (context) => GoogleAuthCubit(),
-              ),
-              BlocProvider(
-                create: (context) => ProfileImageCubit(),
-              ),
-            ],
-            child: MaterialApp.router(
-              debugShowCheckedModeBanner: false,
-              title: 'Healthy Food',
-              theme: mainTheme,
-              routerConfig: AppRouter.appRouter,
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) {
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => FavoriteCubit(),
             ),
-          );
-        });
+            BlocProvider(
+              create: (context) => GoogleAuthCubit(),
+            ),
+            BlocProvider(
+              create: (context) => ProfileImageCubit(),
+            ),
+          ],
+          child: ValueListenableBuilder(
+            valueListenable: Hive.box(Strings.switchersBox).listenable(),
+            builder: (BuildContext context, box, Widget? child) {
+              String isArabic =
+                  box.get(Strings.languageValue, defaultValue: "en");
+              return MaterialApp.router(
+                locale: Locale(isArabic),
+
+                localizationsDelegates: const [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: S.delegate.supportedLocales,
+                debugShowCheckedModeBanner: false,
+                title: 'Healthy Food',
+                theme: isArabic == 'ar'
+                    ? arMainTheme
+                    : mainTheme, // Pass the context to mainTheme
+                routerConfig: AppRouter.appRouter,
+              );
+            },
+          ),
+        );
+      },
+    );
   }
 }

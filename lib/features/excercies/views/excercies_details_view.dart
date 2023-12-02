@@ -1,10 +1,10 @@
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:healthy_food/core/theme/app_colors.dart';
 
+import '../../../generated/l10n.dart';
 import '../widgets/excerices_set.dart';
 import '../widgets/icon_tile_row.dart';
-
 
 class WorkoutDetailView extends StatefulWidget {
   final Map dObj;
@@ -29,9 +29,9 @@ class _WorkoutDetailViewState extends State<WorkoutDetailView> {
   ];
 
   List youArr = [
-    {"image": "assets/icons/barbell.png", "title": "Barbell"},
-    {"image": "assets/icons/skipping_rope.png", "title": "Skipping Rope"},
-    {"image": "assets/icons/bottle.png", "title": "Bottle 1 Liters"},
+    {"image": "assets/images/barbell.png", "title": "Barbell"},
+    {"image": "assets/images/skipping_rope.png", "title": "Skipping Rope"},
+    {"image": "assets/images/bottle.png", "title": "Bottle 1 Liters"},
   ];
 
   List exercisesArr = [
@@ -103,7 +103,6 @@ class _WorkoutDetailViewState extends State<WorkoutDetailView> {
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     return Scaffold(
-
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
@@ -111,45 +110,23 @@ class _WorkoutDetailViewState extends State<WorkoutDetailView> {
               backgroundColor: Colors.transparent,
               centerTitle: true,
               elevation: 0,
-              leading: InkWell(
-                onTap: () {
+              leading: IconButton(
+                onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Container(
-                  margin: const EdgeInsets.all(8),
-                  height: 40,
-                  width: 40,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: AppColors.scaffoldBackgroundColor,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Image.asset(
-                    "assets/icons/back_icon.png",
-                    width: 15,
-                    height: 15,
-                    fit: BoxFit.contain,
-                  ),
+                icon: const Icon(
+                  Icons.arrow_back_ios,
+                  color: AppColors.bodySmallTextColor,
                 ),
               ),
               actions: [
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    margin: const EdgeInsets.all(8),
-                    height: 40,
-                    width: 40,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: AppColors.scaffoldBackgroundColor,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Image.asset(
-                      "assets/icons/more_icon.png",
-                      width: 15,
-                      height: 15,
-                      fit: BoxFit.contain,
-                    ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.more_horiz,
+                    color: AppColors.bodySmallTextColor,
                   ),
-                )
+                ),
               ],
             ),
             SliverAppBar(
@@ -174,7 +151,7 @@ class _WorkoutDetailViewState extends State<WorkoutDetailView> {
         body: Container(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           decoration: const BoxDecoration(
-              color: AppColors.whiteColor,
+              color: AppColors.scaffoldBackgroundColor,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(25), topRight: Radius.circular(25))),
           child: Scaffold(
@@ -191,7 +168,8 @@ class _WorkoutDetailViewState extends State<WorkoutDetailView> {
                         width: 50,
                         height: 4,
                         decoration: BoxDecoration(
-                            color: AppColors.scaffoldBackgroundColor.withOpacity(0.3),
+                            color: AppColors.scaffoldBackgroundColor
+                                .withOpacity(0.3),
                             borderRadius: BorderRadius.circular(3)),
                       ),
                       SizedBox(
@@ -206,38 +184,32 @@ class _WorkoutDetailViewState extends State<WorkoutDetailView> {
                               children: [
                                 Text(
                                   widget.dObj["title"].toString(),
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                       color: AppColors.whiteColor,
                                       fontSize: 16,
+                                      fontFamily: S.of(context).fontFamily,
                                       fontWeight: FontWeight.w700),
                                 ),
                                 Text(
                                   "${widget.dObj["exercises"].toString()} | ${widget.dObj["time"].toString()} | 320 Calories Burn",
-                                  style: const TextStyle(
-                                      color: AppColors.scaffoldBackgroundColor, fontSize: 12),
+                                  style: TextStyle(
+                                      fontFamily: S.of(context).fontFamily,
+                                      color: AppColors.infoTextColor,
+                                      fontSize: 12),
                                 ),
                               ],
                             ),
                           ),
-                          TextButton(
-                            onPressed: () {},
-                            child: Image.asset(
-                              "assets/icons/fav_icon.png",
-                              width: 15,
-                              height: 15,
-                              fit: BoxFit.contain,
-                            ),
-                          )
                         ],
                       ),
                       SizedBox(
                         height: media.width * 0.05,
                       ),
                       IconTitleNextRow(
-                          icon: "assets/icons/time_icon.png",
+                          icon: CupertinoIcons.calendar,
                           title: "Schedule Workout",
                           time: "5/27, 09:00 AM",
-                          color: AppColors.scaffoldBackgroundColor.withOpacity(0.3),
+                          color: AppColors.cardColor,
                           onPressed: () {
                             // Navigator.pushNamed(
                             //     context, WorkoutScheduleView.routeName);
@@ -246,10 +218,11 @@ class _WorkoutDetailViewState extends State<WorkoutDetailView> {
                         height: media.width * 0.02,
                       ),
                       IconTitleNextRow(
-                          icon: "assets/icons/difficulity_icon.png",
+                          icon: CupertinoIcons.question_circle_fill,
                           title: "Difficulity",
                           time: "Beginner",
-                          color: AppColors.scaffoldBackgroundColor.withOpacity(0.3),
+                          color: AppColors.scaffoldBackgroundColor
+                              .withOpacity(0.3),
                           onPressed: () {}),
                       SizedBox(
                         height: media.width * 0.05,
@@ -269,7 +242,8 @@ class _WorkoutDetailViewState extends State<WorkoutDetailView> {
                             child: Text(
                               "${youArr.length} Items",
                               style: const TextStyle(
-                                  color: AppColors.scaffoldBackgroundColor, fontSize: 12),
+                                  color: AppColors.scaffoldBackgroundColor,
+                                  fontSize: 12),
                             ),
                           )
                         ],
@@ -293,7 +267,8 @@ class _WorkoutDetailViewState extends State<WorkoutDetailView> {
                                         height: media.width * 0.35,
                                         width: media.width * 0.35,
                                         decoration: BoxDecoration(
-                                            color: AppColors.scaffoldBackgroundColor,
+                                            color: AppColors
+                                                .scaffoldBackgroundColor,
                                             borderRadius:
                                                 BorderRadius.circular(15)),
                                         alignment: Alignment.center,
@@ -367,15 +342,6 @@ class _WorkoutDetailViewState extends State<WorkoutDetailView> {
                     ],
                   ),
                 ),
-                SafeArea(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                    
-                    ],
-                  ),
-                )
               ],
             ),
           ),

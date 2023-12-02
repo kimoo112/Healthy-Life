@@ -4,6 +4,7 @@ import 'package:healthy_food/core/constants/routes.dart';
 import 'package:healthy_food/features/auth/logic/cubit/google_auth_cubit.dart';
 import 'package:healthy_food/features/auth/views/signin_view.dart';
 import 'package:healthy_food/features/base/base_screen.dart';
+import 'package:healthy_food/features/bmi_calc/views/input_view.dart';
 import 'package:healthy_food/features/favorite/views/favorite_view.dart';
 import 'package:healthy_food/features/home/data/recipe_model.dart';
 import 'package:healthy_food/features/home/views/home_view.dart';
@@ -15,10 +16,10 @@ class AppRouter {
   static final appRouter = GoRouter(
     initialLocation: '/',
     routes: [
-      // GoRoute(
-      //   path: splash,
-      //   builder: (context, state) => const SplashView(),
-      // ),
+      GoRoute(
+        path: bmi,
+        builder: (context, state) => const InputView(),
+      ),
       GoRoute(
         path: signin,
         builder: (context, state) => BlocProvider(

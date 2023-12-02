@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-import '../../../core/constants/strings.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../generated/l10n.dart';
 
 class AnimatedTitleWidget extends StatelessWidget {
   final Duration titleDelayDuration;
@@ -25,11 +25,15 @@ class AnimatedTitleWidget extends StatelessWidget {
         child: Text.rich(
           TextSpan(style: Theme.of(context).textTheme.displaySmall, children: [
             TextSpan(
-              text: Strings.onBoardingTitle.toUpperCase(),
+              text: S.of(context).onBoardingTitle.toUpperCase(),
+                style:  TextStyle(
+                fontFamily: S.of(context).fontFamily, )
             ),
             TextSpan(
-                text: ' Everyday'.toUpperCase(),
-                style: const TextStyle(color: AppColors.timeLineColor)),
+                text: S.of(context).everyday.toUpperCase(),
+                style:  TextStyle(color: AppColors.timeLineColor
+                ,fontFamily: S.of(context).fontFamily, 
+                )),
           ]),
           textAlign: TextAlign.center,
         ),

@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
+import '../../../generated/l10n.dart';
+
 class AnimatedNameWidget extends StatelessWidget {
   final Duration namePlayDuration;
   final Duration nameDelayDuration;
@@ -14,9 +16,10 @@ class AnimatedNameWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "Hello, \n${FirebaseAuth.instance.currentUser?.displayName} 👋 ",
+      "${S.of(context).Hello} \n${FirebaseAuth.instance.currentUser?.displayName} 👋 ",
       maxLines: 2,
-      style: Theme.of(context).textTheme.headlineMedium,
+      style:  TextStyle(
+          fontSize: 28, fontWeight: FontWeight.bold, fontFamily: S.of(context).fontFamily),
     )
         .animate()
         .slideX(

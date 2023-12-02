@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy_food/features/excercies/widgets/round_button.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../../generated/l10n.dart';
 
 class WhatTrainRow extends StatelessWidget {
   final Map wObj;
@@ -25,40 +27,40 @@ class WhatTrainRow extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
           ),
           child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      wObj["title"].toString(),
-                      style: const TextStyle(
-                          color: AppColors.whiteColor,
-                                           fontFamily: "Poppins",
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    wObj["title"].toString(),
+                    style: TextStyle(
+                        color: AppColors.whiteColor,
+                        fontFamily: S.of(context).fontFamily,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500),
+                  ),
+                   SizedBox(
+                    height: 7.h,
+                  ),
+                  Text(
+                    "${wObj["exercises"].toString()} | ${wObj["time"].toString()}",
+                    style: TextStyle(
+                      color: AppColors.infoTextColor,
+                      fontFamily: S.of(context).fontFamily,
+                      fontSize: 12,
                     ),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    Text(
-                      "${wObj["exercises"].toString()} | ${wObj["time"].toString()}",
-                      style: const TextStyle(
-                        color: AppColors.infoTextColor,
-                                           fontFamily: "Poppins",
- fontSize: 12,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    SizedBox(
-                      width: 100,
-                      height: 30,
-                      child: RoundButton(title: "View More", onPressed: () {}),
-                    )
-                  ],
-                ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  SizedBox(
+                    width: 100,
+                    height: 30,
+                    child: RoundButton(title: S.of(context).ViewMore, onPressed: () {}),
+                  )
+                ],
               ),
               const SizedBox(
                 width: 15,

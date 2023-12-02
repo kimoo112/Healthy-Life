@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-import '../../../core/constants/strings.dart';
+import '../../../generated/l10n.dart';
 
 class AnimatedDescriptionWidget extends StatelessWidget {
   final Duration descriptionPlayDuration;
@@ -21,7 +21,7 @@ class AnimatedDescriptionWidget extends StatelessWidget {
           horizontal: 40,
         ),
         child: Text(
-          Strings.onBoardingSlogan,
+          S.of(context).onBoardingSlogan,
           maxLines: 2,
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.titleLarge,

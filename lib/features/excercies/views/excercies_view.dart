@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:healthy_food/features/excercies/widgets/round_button.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../../generated/l10n.dart';
 import '../widgets/upcoming_workout_row.dart';
 import '../widgets/what_train_row.dart';
+import 'excercies_details_view.dart';
 
 class ExcerciesView extends StatefulWidget {
   const ExcerciesView({Key? key}) : super(key: key);
@@ -14,42 +16,41 @@ class ExcerciesView extends StatefulWidget {
 }
 
 class _ExcerciesViewState extends State<ExcerciesView> {
-  List latestArr = [
-    {
-      "image": "assets/images/Workout1.png",
-      "title": "Fullbody Workout",
-      "time": "Today, 03:00pm"
-    },
-    {
-      "image": "assets/images/Workout2.png",
-      "title": "Upperbody Workout",
-      "time": "June 05, 02:00pm"
-    },
-  ];
-
-  List whatArr = [
-    {
-      "image": "assets/images/what_1.png",
-      "title": "Fullbody Workout",
-      "exercises": "11 Exercises",
-      "time": "32mins"
-    },
-    {
-      "image": "assets/images/what_2.png",
-      "title": "Lowebody Workout",
-      "exercises": "12 Exercises",
-      "time": "40mins"
-    },
-    {
-      "image": "assets/images/what_3.png",
-      "title": "AB Workout",
-      "exercises": "14 Exercises",
-      "time": "20mins"
-    }
-  ];
-
   @override
   Widget build(BuildContext context) {
+    List latestArr = [
+      {
+        "image": "assets/images/Workout1.png",
+        "title": S.of(context).fullbodyWorkout,
+        "time": '${S.of(context).today}, 03:00pm'
+      },
+      {
+        "image": "assets/images/Workout2.png",
+        "title": S.of(context).upperbodyWorkout,
+        "time": '${S.of(context).june} 05, 02:00pm'
+      },
+    ];
+
+    List whatArr = [
+      {
+        "image": "assets/images/what_1.png",
+        "title": S.of(context).fullbodyWorkout,
+        "exercises": "11 ${S.of(context).exercises}",
+        "time": "32${S.of(context).mins}"
+      },
+      {
+        "image": "assets/images/what_2.png",
+        "title": S.of(context).lowerbodyWorkout,
+        "exercises": "12 ${S.of(context).exercises}",
+        "time": "40${S.of(context).mins}"
+      },
+      {
+        "image": "assets/images/what_3.png",
+        "title": S.of(context).abWorkout,
+        "exercises": "14 ${S.of(context).exercises}",
+        "time": "20${S.of(context).mins}"
+      }
+    ];
     var media = MediaQuery.of(context).size;
     return Scaffold(
       body: NestedScrollView(
@@ -61,17 +62,17 @@ class _ExcerciesViewState extends State<ExcerciesView> {
               elevation: 0,
               // pinned: true,
               title: Text(
-                "Workout Tracker".toUpperCase(),
-                style: const TextStyle(
+                S.of(context).workoutTracker.toUpperCase(),
+                style: TextStyle(
                     color: AppColors.whiteColor,
                     fontSize: 22,
-                    fontFamily: "Poppins",
+                    fontFamily: S.of(context).fontFamily,
                     fontWeight: FontWeight.w700),
               ),
               actions: [
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.more_horiz,
                     color: AppColors.bodySmallTextColor,
                   ),
@@ -224,10 +225,11 @@ class _ExcerciesViewState extends State<ExcerciesView> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
-                            "Daily Workout Schedule",
+                          Text(
+                            S.of(context).dailyWorkoutSchedule,
                             style: TextStyle(
-                                color: AppColors.scaffoldBackgroundColor,
+                                fontFamily: S.of(context).fontFamily,
+                                color: AppColors.whiteColor.withOpacity(.8),
                                 fontSize: 14,
                                 fontWeight: FontWeight.w700),
                           ),
@@ -235,16 +237,8 @@ class _ExcerciesViewState extends State<ExcerciesView> {
                             width: 70,
                             height: 25,
                             child: RoundButton(
-                              title: "Check",
-                              onPressed: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) =>
-                                //         const ActivityTrackerView(),
-                                //   ),
-                                // );
-                              },
+                              title: S.of(context).Check,
+                              onPressed: () {},
                             ),
                           )
                         ],
@@ -256,19 +250,21 @@ class _ExcerciesViewState extends State<ExcerciesView> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
-                          "Upcoming Workout",
+                        Text(
+                          S.of(context).upcomingWorkout,
                           style: TextStyle(
+                              fontFamily: S.of(context).fontFamily,
                               color: AppColors.whiteColor,
                               fontSize: 16,
                               fontWeight: FontWeight.w700),
                         ),
                         TextButton(
                           onPressed: () {},
-                          child: const Text(
-                            "See More",
+                          child: Text(
+                            S.of(context).SeeMore,
                             style: TextStyle(
                                 color: AppColors.infoTextColor,
+                                fontFamily: S.of(context).fontFamily,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w700),
                           ),
@@ -287,13 +283,14 @@ class _ExcerciesViewState extends State<ExcerciesView> {
                     SizedBox(
                       height: media.width * 0.05,
                     ),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "What Do You Want to Train",
+                          S.of(context).wantTrain,
                           style: TextStyle(
                               color: AppColors.scaffoldBackgroundColor,
+                              fontFamily: S.of(context).fontFamily,
                               fontSize: 16,
                               fontWeight: FontWeight.w700),
                         ),
@@ -308,7 +305,12 @@ class _ExcerciesViewState extends State<ExcerciesView> {
                           var wObj = whatArr[index] as Map? ?? {};
                           return InkWell(
                               onTap: () {
-                                // Navigator.push(context, MaterialPageRoute(builder: (context) =>  WorkoutDetailView( dObj: wObj, ) ));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => WorkoutDetailView(
+                                              dObj: wObj,
+                                            )));
                               },
                               child: WhatTrainRow(wObj: wObj));
                         }),
@@ -342,14 +344,14 @@ class _ExcerciesViewState extends State<ExcerciesView> {
         isStrokeCapRound: true,
         dotData: const FlDotData(show: false),
         belowBarData: BarAreaData(show: false),
-        spots: const [
-          FlSpot(1, 35),
-          FlSpot(2, 70),
-          FlSpot(3, 40),
-          FlSpot(4, 80),
-          FlSpot(5, 25),
-          FlSpot(6, 70),
-          FlSpot(7, 35),
+        spots: [
+          const FlSpot(1, 35),
+          const FlSpot(2, 70),
+          const FlSpot(3, 40),
+          const FlSpot(4, 80),
+          const FlSpot(5, 25),
+          const FlSpot(6, 70),
+          const FlSpot(7, 35),
         ],
       );
 
@@ -362,14 +364,14 @@ class _ExcerciesViewState extends State<ExcerciesView> {
         belowBarData: BarAreaData(
           show: false,
         ),
-        spots: const [
-          FlSpot(1, 80),
-          FlSpot(2, 50),
-          FlSpot(3, 90),
-          FlSpot(4, 40),
-          FlSpot(5, 80),
-          FlSpot(6, 35),
-          FlSpot(7, 60),
+        spots: [
+          const FlSpot(1, 80),
+          const FlSpot(2, 50),
+          const FlSpot(3, 90),
+          const FlSpot(4, 40),
+          const FlSpot(5, 80),
+          const FlSpot(6, 35),
+          const FlSpot(7, 60),
         ],
       );
 
@@ -406,7 +408,8 @@ class _ExcerciesViewState extends State<ExcerciesView> {
     }
 
     return Text(text,
-        style: const TextStyle(
+        style: TextStyle(
+          fontFamily: S.of(context).fontFamily,
           color: AppColors.whiteColor,
           fontSize: 12,
         ),
@@ -421,7 +424,8 @@ class _ExcerciesViewState extends State<ExcerciesView> {
       );
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    var style = const TextStyle(
+    var style = TextStyle(
+      fontFamily: S.of(context).fontFamily,
       color: AppColors.whiteColor,
       fontSize: 12,
     );

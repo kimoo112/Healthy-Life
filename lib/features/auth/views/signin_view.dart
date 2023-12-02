@@ -6,6 +6,8 @@ import 'package:healthy_food/core/theme/app_colors.dart';
 import 'package:healthy_food/features/auth/logic/cubit/google_auth_cubit.dart';
 import 'package:ionicons/ionicons.dart';
 
+import '../../../generated/l10n.dart';
+
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);
 
@@ -25,13 +27,13 @@ class SignInScreen extends StatelessWidget {
             ),
             const SizedBox(height: 40.0),
             // Animated Text Fields
-            const AnimatedTextField(
-              label: 'Email',
+             AnimatedTextField(
+              label: S.of(context).email,
               delayDuration: 300,
             ),
             const SizedBox(height: 16.0),
-            const AnimatedTextField(
-              label: 'Password',
+             AnimatedTextField(
+              label:S.of(context).password,
               delayDuration: 600,
               isPassword: true,
             ),
@@ -58,9 +60,10 @@ class SignInScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 15),
               ),
               child: Text(
-                'SignIn'.toUpperCase(),
+                 S.of(context).signinButton.toUpperCase(),
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
                     color: AppColors.scaffoldBackgroundColor,
+                   fontFamily:  S.of(context).fontFamily,
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
                     letterSpacing: .4),
@@ -137,14 +140,14 @@ class AnimatedTextField extends StatelessWidget {
               decoration: InputDecoration(
                 //!ToDo add prefex icon
                 labelText: label,
-                suffixIcon: label == 'Password'
+                suffixIcon: label == S.of(context).password 
                     ? const Icon(CupertinoIcons.eye, color: Colors.white)
                     : null,
                 labelStyle: const TextStyle(
                     color: Colors.white, fontWeight: FontWeight.w400),
-                prefixIcon: label == 'Email'
+                prefixIcon: label == S.of(context).email
                     ? const Icon(CupertinoIcons.mail_solid, color: Colors.white)
-                    : label == 'Password'
+                    : label == S.of(context).password
                         ? const Icon(CupertinoIcons.lock, color: Colors.white)
                         : null,
                 border: OutlineInputBorder(

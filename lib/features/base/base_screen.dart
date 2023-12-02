@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:healthy_food/features/bmi_calc/views/input_view.dart';
 import 'package:healthy_food/features/excercies/views/excercies_view.dart';
+import 'package:healthy_food/features/map/views/map_view.dart';
 import 'package:healthy_food/features/profile/views/profile_view.dart';
 import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
 
@@ -20,16 +22,16 @@ class _BaseScreenState extends State<BaseScreen> {
     const HomeView(),
     const FavoriteView(),
     const ExcerciesView(),
+    const MapScreen(),
     const ProfileView(),
   ];
   int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.scaffoldBackgroundColor,
       extendBody: true,
       body: screens[_selectedIndex],
-      // backgroundColor: Colors.deepPurple[400],
-      // you can use the molten bar in the scaffold's bottomNavigationBar
       bottomNavigationBar: MoltenBottomNavigationBar(
         selectedIndex: _selectedIndex,
         barColor: AppColors.scaffoldBackgroundColor,
@@ -52,6 +54,12 @@ class _BaseScreenState extends State<BaseScreen> {
               selectedColor: AppColors.cardColor
               // selectedColor: Colors.yellow,
               ),
+          MoltenTab(
+              icon: const Icon(CupertinoIcons.location_solid),
+              selectedColor: AppColors.cardColor
+              // selectedColor: Colors.yellow,
+              ),
+           
           MoltenTab(
               icon: const Icon(CupertinoIcons.person_alt),
               selectedColor: AppColors.cardColor

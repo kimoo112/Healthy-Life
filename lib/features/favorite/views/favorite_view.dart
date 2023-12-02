@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../generated/l10n.dart';
 import '../../home/data/recipe_model.dart';
 import '../../home/widgets/recipe_container.dart';
 import '../logic/cubit/favorite_cubit.dart';
@@ -19,7 +20,7 @@ class FavoriteView extends StatelessWidget {
           backgroundColor: Colors.transparent,
           scrolledUnderElevation: 0,
           elevation: 0,
-          title: const Text('Your Favorites'),
+          title:  Text(S.of(context).yourFavorites),
           centerTitle: true,
         ),
         body: BlocBuilder<FavoriteCubit, FavoriteState>(
@@ -35,8 +36,10 @@ class FavoriteView extends StatelessWidget {
                       height: 20,
                     ),
                     Text(
-                       'No favorite recipes yet ? Explore our delicious collection and add your favorites! 🍲🥗',
-                      style: TextStyle(fontSize: 14.sp, fontFamily: 'Poppins'),
+                    S.of(context).noFavoritesMessage,
+                      style: TextStyle(
+                          fontSize: 14.sp,
+                          fontFamily: S.of(context).fontFamily),
                       textAlign: TextAlign.center,
                     )
                   ],

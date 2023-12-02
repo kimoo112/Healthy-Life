@@ -3,6 +3,8 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy_food/core/theme/app_colors.dart';
 
+import '../../../generated/l10n.dart';
+
 class CustomProfileTile extends StatelessWidget {
   const CustomProfileTile({
     super.key,
@@ -34,13 +36,13 @@ class CustomProfileTile extends StatelessWidget {
           padding: EdgeInsets.only(top: 4.0.sp),
           child: Text(
             subtitle ?? '',
-            style: const TextStyle(
-              fontWeight: FontWeight.w400,
-            ),
+            style: TextStyle(
+                fontWeight: FontWeight.w200,
+                fontFamily: S.of(context).fontFamily),
           ),
         ),
         trailing: trailing ??
-            Icon(
+            const Icon(
               IconlyLight.arrowRight2,
               color: AppColors.bodySmallTextColor,
             ),

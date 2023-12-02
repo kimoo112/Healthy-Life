@@ -2,9 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-import '../../../core/constants/strings.dart';
 import '../../../core/theme/app_colors.dart';
-
+import '../../../generated/l10n.dart';
 
 class AnimatedButtonWidget extends StatelessWidget {
   final Duration buttonDelayDuration;
@@ -60,7 +59,7 @@ class AnimatedTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: Text(Strings.onBoardingButton,
+      child: Text(S.of(context).onBoardingButton,
           maxLines: 2,
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.bodyLarge),

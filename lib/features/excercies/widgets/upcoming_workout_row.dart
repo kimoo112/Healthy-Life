@@ -1,7 +1,9 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../../generated/l10n.dart';
 
 class UpcomingWorkoutRow extends StatefulWidget {
   final Map wObj;
@@ -42,17 +44,22 @@ class _UpcomingWorkoutRowState extends State<UpcomingWorkoutRow> {
               children: [
                 Text(
                   widget.wObj["title"].toString(),
-                  style: const TextStyle(
+                  style:  TextStyle(
                       color: AppColors.scaffoldBackgroundColor,
-                    fontFamily: "Poppins",
+                                              fontFamily: S.of(context).fontFamily,
+
                       fontSize: 15,
                       fontWeight: FontWeight.w500),
+                ),
+                SizedBox(
+                  height: 5.h,
                 ),
                 Text(
                   widget.wObj["time"].toString(),
                   style:  TextStyle(
                     color: AppColors.scaffoldBackgroundColor.withOpacity(.7),
-                    fontFamily: "Poppins",
+                                              fontFamily: S.of(context).fontFamily,
+
                     fontSize: 10,
                   ),
                 ),
