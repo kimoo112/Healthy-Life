@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healthy_food/core/theme/app_colors.dart';
+import '../../../core/theme/app_colors.dart';
 
 import '../../../generated/l10n.dart';
 

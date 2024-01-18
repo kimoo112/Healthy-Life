@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healthy_food/core/theme/app_colors.dart';
-import 'package:healthy_food/features/auth/logic/cubit/google_auth_cubit.dart';
+import '../../../core/theme/app_colors.dart';
+import '../logic/cubit/google_auth_cubit.dart';
 import 'package:ionicons/ionicons.dart';
 
 import '../../../generated/l10n.dart';
@@ -27,13 +27,13 @@ class SignInScreen extends StatelessWidget {
             ),
             const SizedBox(height: 40.0),
             // Animated Text Fields
-             AnimatedTextField(
+            AnimatedTextField(
               label: S.of(context).email,
               delayDuration: 300,
             ),
             const SizedBox(height: 16.0),
-             AnimatedTextField(
-              label:S.of(context).password,
+            AnimatedTextField(
+              label: S.of(context).password,
               delayDuration: 600,
               isPassword: true,
             ),
@@ -60,10 +60,10 @@ class SignInScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 15),
               ),
               child: Text(
-                 S.of(context).signinButton.toUpperCase(),
+                S.of(context).signinButton.toUpperCase(),
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
                     color: AppColors.scaffoldBackgroundColor,
-                   fontFamily:  S.of(context).fontFamily,
+                    fontFamily: S.of(context).fontFamily,
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
                     letterSpacing: .4),
@@ -140,7 +140,7 @@ class AnimatedTextField extends StatelessWidget {
               decoration: InputDecoration(
                 //!ToDo add prefex icon
                 labelText: label,
-                suffixIcon: label == S.of(context).password 
+                suffixIcon: label == S.of(context).password
                     ? const Icon(CupertinoIcons.eye, color: Colors.white)
                     : null,
                 labelStyle: const TextStyle(
@@ -153,6 +153,11 @@ class AnimatedTextField extends StatelessWidget {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide(color: Colors.white.withOpacity(.5)),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide:
+                      const BorderSide(color: AppColors.onBoardingButtonColor),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),

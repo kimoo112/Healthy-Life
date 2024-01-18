@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:healthy_food/core/theme/app_colors.dart';
+import 'app_colors.dart';
 
 final mainTheme = ThemeData.dark().copyWith(
     useMaterial3: true,

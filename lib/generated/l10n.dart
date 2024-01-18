@@ -569,6 +569,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Write your message here...`
+  String get writeYourMessage {
+    return Intl.message(
+      'Write your message here...',
+      name: 'writeYourMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send`
+  String get sendMessage {
+    return Intl.message(
+      'Send',
+      name: 'sendMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `HEALTHY LIFE PUBLIC CHAT`
+  String get ChatTitle {
+    return Intl.message(
+      'HEALTHY LIFE PUBLIC CHAT',
+      name: 'ChatTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

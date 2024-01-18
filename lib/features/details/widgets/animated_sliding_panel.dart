@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:healthy_food/features/home/data/recipe_model.dart';
+import '../../home/data/recipe_model.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import '../../../core/theme/app_colors.dart';

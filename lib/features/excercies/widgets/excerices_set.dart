@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:healthy_food/features/excercies/widgets/excerices_row.dart';
+import 'excerices_row.dart';
 
 import '../../../core/theme/app_colors.dart';
 

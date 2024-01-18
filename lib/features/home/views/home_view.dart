@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:healthy_food/features/home/data/recipe_model.dart';
-import 'package:healthy_food/features/home/widgets/recipe_container.dart';
 
 import '../../../core/widgets/annotated_scaffold.dart';
-import '../../details/views/details_view.dart';
 import '../../profile/logic/cubit/profile_image_cubit.dart';
 import '../widgets/animated_appbar_widget.dart';
 import '../widgets/animated_category_list.dart';
 import '../widgets/animated_selected_category_widget.dart';
+import '../widgets/healthy_list_view.dart';
+import '../widgets/recipes_list_view.dart';
+import '../widgets/snack_list_view.dart';
+import '../widgets/soup_list_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -20,7 +21,6 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView>
     with SingleTickerProviderStateMixin {
-  late final List<RecipeModel> recipeModel;
   late TabController _tabController;
 
   @override
@@ -125,138 +125,3 @@ class _HomeViewState extends State<HomeView>
     );
   }
 }
-
-class RecipeListView extends StatelessWidget {
-  const RecipeListView({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-        shrinkWrap: true,
-        itemCount: recipes.length,
-        itemBuilder: (BuildContext context, int index) {
-          // final List<RecipeModel> healthyRecipes = recipes.where((recipe) => recipe.isHealthy).toList();
-          final RecipeModel recipeModel = recipes[index];
-          return GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        RecipeDetailsView(recipe: recipeModel),
-                  ),
-                );
-              },
-              child: RecipeCard(
-                recipeModel: recipeModel,
-                isFavoriteView: false,
-              ));
-        });
-  }
-}
-
-class HealthyListView extends StatelessWidget {
-  const HealthyListView({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final List<RecipeModel> healthyRecipes =
-        recipes.where((recipe) => recipe.isHealthy).toList();
-    return ListView.builder(
-        shrinkWrap: true,
-        itemCount: healthyRecipes.length,
-        itemBuilder: (BuildContext context, int index) {
-          final List<RecipeModel> healthyRecipes =
-              recipes.where((recipe) => recipe.isHealthy).toList();
-          final RecipeModel recipeModel = healthyRecipes[index];
-          return GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        RecipeDetailsView(recipe: recipeModel),
-                  ),
-                );
-              },
-              child: RecipeCard(
-                recipeModel: recipeModel,
-                isFavoriteView: false,
-              ));
-        });
-  }
-}
-
-class SoupListView extends StatelessWidget {
-  const SoupListView({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final List<RecipeModel> healthyRecipes =
-        recipes.where((recipe) => recipe.isSoup).toList();
-    return ListView.builder(
-        shrinkWrap: true,
-        itemCount: healthyRecipes.length,
-        itemBuilder: (BuildContext context, int index) {
-          final List<RecipeModel> healthyRecipes =
-              recipes.where((recipe) => recipe.isSoup).toList();
-          final RecipeModel recipeModel = healthyRecipes[index];
-          return GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        RecipeDetailsView(recipe: recipeModel),
-                  ),
-                );
-              },
-              child: RecipeCard(
-                recipeModel: recipeModel,
-                isFavoriteView: false,
-              ));
-        });
-  }
-}
-
-
-class SnackListView extends StatelessWidget {
-  const SnackListView({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final List<RecipeModel> healthyRecipes =
-        recipes.where((recipe) => recipe.isSnack).toList();
-    return ListView.builder(
-        shrinkWrap: true,
-        itemCount: healthyRecipes.length,
-        itemBuilder: (BuildContext context, int index) {
-          final List<RecipeModel> healthyRecipes =
-              recipes.where((recipe) => recipe.isSnack).toList();
-          final RecipeModel recipeModel = healthyRecipes[index];
-          return GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        RecipeDetailsView(recipe: recipeModel),
-                  ),
-                );
-              },
-              child: RecipeCard(
-                recipeModel: recipeModel,
-                isFavoriteView: false,
-              ));
-        });
-  }
-}
-

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:healthy_food/core/theme/app_colors.dart';
-import 'package:healthy_food/features/bmi_calc/views/result_view.dart';
+import '../../../core/theme/app_colors.dart';
+import 'result_view.dart';
 
 import '../../../generated/l10n.dart';
 import '../logic/calculator_methods.dart';

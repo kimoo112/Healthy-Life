@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:healthy_food/features/home/data/recipe_model.dart';
+import '../../../home/data/recipe_model.dart';
 import 'package:meta/meta.dart';
 
 part 'favorite_state.dart';

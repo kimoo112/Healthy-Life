@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:healthy_food/features/bmi_calc/views/input_view.dart';
-import 'package:healthy_food/features/excercies/views/excercies_view.dart';
-import 'package:healthy_food/features/map/views/map_view.dart';
-import 'package:healthy_food/features/profile/views/profile_view.dart';
+import '../chat/views/chat_view.dart';
+import '../excercies/views/excercies_view.dart';
+import '../map/views/map_view.dart';
+import '../profile/views/profile_view.dart';
 import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
 
 import '../../core/theme/app_colors.dart';
@@ -22,6 +22,7 @@ class _BaseScreenState extends State<BaseScreen> {
     const HomeView(),
     const FavoriteView(),
     const ExcerciesView(),
+    const ChatView(),
     const MapScreen(),
     const ProfileView(),
   ];
@@ -55,11 +56,15 @@ class _BaseScreenState extends State<BaseScreen> {
               // selectedColor: Colors.yellow,
               ),
           MoltenTab(
+              icon: const Icon(CupertinoIcons.chat_bubble_2),
+              selectedColor: AppColors.cardColor
+              // selectedColor: Colors.yellow,
+              ),
+          MoltenTab(
               icon: const Icon(CupertinoIcons.location_solid),
               selectedColor: AppColors.cardColor
               // selectedColor: Colors.yellow,
               ),
-           
           MoltenTab(
               icon: const Icon(CupertinoIcons.person_alt),
               selectedColor: AppColors.cardColor

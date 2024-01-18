@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healthy_food/features/excercies/widgets/round_button.dart';
+import 'round_button.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../generated/l10n.dart';

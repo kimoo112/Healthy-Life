@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "ChatTitle": MessageLookupByLibrary.simpleMessage("الدردشه العامه"),
         "Check": MessageLookupByLibrary.simpleMessage("تفقد"),
         "Hello": MessageLookupByLibrary.simpleMessage("مرحبا"),
         "Language": MessageLookupByLibrary.simpleMessage("اللغه"),
@@ -52,7 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
         "enabledSubtitle":
             MessageLookupByLibrary.simpleMessage("ستتلقى التحديثات والتنبيهات"),
-        "everyday": MessageLookupByLibrary.simpleMessage("  كل يوم   "),
+        "everyday": MessageLookupByLibrary.simpleMessage("كل يوم "),
         "exercises": MessageLookupByLibrary.simpleMessage("تمارين"),
         "fontFamily": MessageLookupByLibrary.simpleMessage("Almarai"),
         "fullbodyWorkout":
@@ -77,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "popularCategory": MessageLookupByLibrary.simpleMessage("شائع"),
         "recalculate": MessageLookupByLibrary.simpleMessage(" اعادة حساب"),
+        "sendMessage": MessageLookupByLibrary.simpleMessage("ارسال"),
         "signinButton": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "snacksCategory": MessageLookupByLibrary.simpleMessage("وجبات خفيفة"),
         "soupCategory": MessageLookupByLibrary.simpleMessage("حساء"),
@@ -89,6 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "weight": MessageLookupByLibrary.simpleMessage("الوزن"),
         "workoutTracker":
             MessageLookupByLibrary.simpleMessage("متابعة التمارين"),
+        "writeYourMessage":
+            MessageLookupByLibrary.simpleMessage("اكتب رسالتك هنا..."),
         "yourFavorites": MessageLookupByLibrary.simpleMessage("المفضلة لديك"),
         "yourResult": MessageLookupByLibrary.simpleMessage("نتيجتك")
       };

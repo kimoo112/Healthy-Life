@@ -1,15 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:healthy_food/core/constants/routes.dart';
-import 'package:healthy_food/features/auth/logic/cubit/google_auth_cubit.dart';
-import 'package:healthy_food/features/auth/views/signin_view.dart';
-import 'package:healthy_food/features/base/base_screen.dart';
-import 'package:healthy_food/features/bmi_calc/views/input_view.dart';
-import 'package:healthy_food/features/favorite/views/favorite_view.dart';
-import 'package:healthy_food/features/home/data/recipe_model.dart';
-import 'package:healthy_food/features/home/views/home_view.dart';
-import 'package:healthy_food/features/onboarding_feature/views/onboarding_view.dart';
-import 'package:healthy_food/features/profile/views/profile_view.dart';
+import 'constants/routes.dart';
+import '../features/auth/logic/cubit/google_auth_cubit.dart';
+import '../features/auth/views/signin_view.dart';
+import '../features/base/base_screen.dart';
+import '../features/bmi_calc/views/input_view.dart';
+import '../features/favorite/views/favorite_view.dart';
+import '../features/home/data/recipe_model.dart';
+import '../features/home/views/home_view.dart';
+import '../features/onboarding/views/onboarding_view.dart';
+import '../features/profile/views/profile_view.dart';
 
 class AppRouter {
   late List<RecipeModel> recipeModel;

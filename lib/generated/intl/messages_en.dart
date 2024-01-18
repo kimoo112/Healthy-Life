@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "ChatTitle":
+            MessageLookupByLibrary.simpleMessage("HEALTHY LIFE PUBLIC CHAT"),
         "Check": MessageLookupByLibrary.simpleMessage("Check"),
         "Hello": MessageLookupByLibrary.simpleMessage("Hello"),
         "Language": MessageLookupByLibrary.simpleMessage("Language"),
@@ -78,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "popularCategory": MessageLookupByLibrary.simpleMessage("Popular"),
         "recalculate": MessageLookupByLibrary.simpleMessage("Re-CALCULATE"),
+        "sendMessage": MessageLookupByLibrary.simpleMessage("Send"),
         "signinButton": MessageLookupByLibrary.simpleMessage("signin"),
         "snacksCategory": MessageLookupByLibrary.simpleMessage("Snacks"),
         "soupCategory": MessageLookupByLibrary.simpleMessage("Soup"),
@@ -91,6 +94,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "weight": MessageLookupByLibrary.simpleMessage("WEIGHT"),
         "workoutTracker":
             MessageLookupByLibrary.simpleMessage("Workout Tracker"),
+        "writeYourMessage":
+            MessageLookupByLibrary.simpleMessage("Write your message here..."),
         "yourFavorites": MessageLookupByLibrary.simpleMessage("Your Favorites"),
         "yourResult": MessageLookupByLibrary.simpleMessage("Your Result")
       };

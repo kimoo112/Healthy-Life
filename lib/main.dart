@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -23,7 +25,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox(Strings.switchersBox);
-
   MyBlocObserver();
   AwesomeNotifications().initialize(
     null,
@@ -44,7 +45,6 @@ void main() async {
       )
     ],
   );
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   FirebaseMessaging masseging = FirebaseMessaging.instance;
   NotificationSettings settings = await masseging.requestPermission();
   await Firebase.initializeApp(

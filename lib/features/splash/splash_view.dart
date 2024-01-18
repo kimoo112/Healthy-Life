@@ -1,8 +1,8 @@
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healthy_food/core/theme/app_colors.dart';
-import 'package:healthy_food/features/auth/views/signin_view.dart';
+import '../../core/theme/app_colors.dart';
+import '../auth/views/signin_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);

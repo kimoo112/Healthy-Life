@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
-import 'package:healthy_food/core/constants/routes.dart';
-import 'package:healthy_food/features/onboarding_feature/widgets/animated_description_widget.dart';
-import 'package:healthy_food/features/onboarding_feature/widgets/animated_title_widget.dart';
+import '../../../core/constants/routes.dart';
+import 'animated_description_widget.dart';
+import 'animated_title_widget.dart';
 
 import 'animated_button_widget.dart';
 import 'animated_dish_widget.dart';
